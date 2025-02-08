@@ -4,7 +4,7 @@ Immense thanks go to [Syssi](https://github.com/syssi) for their guidance and he
 
 Other useful resources:
 - [Cloned Shine-Wifi dongle](https://www.reddit.com/r/Esphome/comments/18lvgsb/made_my_own_growatt_shinewifif_dongle/)
-- [Stuff](https://diysolarforum.com/threads/hacking-the-new-growatt-wifi-f-modules.43231/#post-550051)
+- [Hacking Growatt Wifi-F modules](https://diysolarforum.com/threads/hacking-the-new-growatt-wifi-f-modules.43231/#post-550051)
 
 ## Components
 - SACOLAR 5kVa solar inverter (M5000-H) or similar (inverters that can work with the Shine-Wifi-F dongle)
