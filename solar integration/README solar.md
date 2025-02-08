@@ -71,7 +71,8 @@ I could not find any colour scheme online like this. Luckily I noticed a detail 
 ## Next steps
 - I want to upgrade from the current ESP8266 device to an ESP32 devices (see below)
 - I need to clean up the build, power it from the USB data cable and place it inside a proper container
-- I want to add battery monitoring capabilities 
+- I want to add battery monitoring capabilities
+- A comprehensive Home Assistant dashboard for energy usage (which will ultimately include my water and gas usage)
 
 ### ESP8266 Memory Limitations
 The MODbus protocol on ESP apparently takes up a lot of memory. This has proven to be a problem for OTA on my ESP8266 device. In order for OTA to work, the updated firmware needs to be uploaded alongside the original firmware which means that neither can be larger than 50% of the memory on the device. As such, I cannot update the device over the air; instead, I have to physically connect the device to my laptop so I can flash any updated firmware. When I add battery monitoring capability to my buuild, I believe that the ESP8266's memory will simply not be sufficient. Keep this in mind if you attemp this built.
