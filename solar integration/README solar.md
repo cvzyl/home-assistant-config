@@ -1,4 +1,4 @@
-# Solar Installion README
+# Solar Inverter Monitor README
 
 Immense thanks go to [Syssi](https://github.com/syssi) for their guidance and help on this project. I could not have understood any of this without your patient input.
 
