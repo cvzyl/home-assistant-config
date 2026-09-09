@@ -1,0 +1,118 @@
+substitutions:
+  name: "fence-node"
+  friendly_name: Fence Node
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  compile_process_limit: 1
+  project:
+    name: esphome.web
+    version: '1.0'
+
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption: 
+    key: !secret generic_encryption_key
+
+# Allow Over-The-Air updates
+ota:
+  - platform: esphome
+
+# Allow provisioning Wi-Fi via serial
+improv_serial:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  min_auth_mode: WPA
+  ap:
+    ssid: "${name} fallback AP"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+# To have a "next url" for improv serial
+web_server:
+  port: 80
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: true
+    name: Alarm
+    device_class: tamper
+  
+  - platform: gpio
+    pin:
+      number: GPIO4
+      inverted: True
+      mode: INPUT_PULLUP
+    id: good_LED
+    name: Good LED
+    device_class: power
+    entity_category: diagnostic
+    disabled_by_default: true
+    filters:
+      - delayed_off: 600ms
+
+    on_multi_click:
+      - timing: # Unarmed
+          - OFF for at least 1000ms
+        then:
+          - text_sensor.template.publish:
+              id: active
+              state: "Unarmed"
+        invalid_cooldown: 300ms
+      - timing: # Armed
+          - OFF for at most 500ms
+          - ON for at most 500ms
+          - OFF for at most 500ms
+          - ON for at most 500ms
+        then:
+          - text_sensor.template.publish:
+              id: active
+              state: "Armed"
+        invalid_cooldown: 300ms
+
+  - platform: status
+    name: Status
+
+switch:
+  - platform: gpio
+    pin: GPIO12
+    id: relay
+  - platform: template
+    icon: 'mdi:fence-electric'
+    name: Fence Switch
+    turn_on_action:
+    - switch.turn_on: relay
+    - delay: 700ms
+    - switch.turn_off: relay
+    
+sensor:
+  - platform: wifi_signal
+    name: WIFI Strength
+    update_interval: '60s'
+
+button:
+  - platform: restart
+    name: Restart
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: IP Address
+
+  - platform: template
+    icon: mdi:information-outline
+    id: active
+    name: Armed
