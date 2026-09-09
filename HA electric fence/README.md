@@ -1,1 +1,1 @@
-Home Assistant Electric Fence Monitor
+# Electric Fence Controller README
