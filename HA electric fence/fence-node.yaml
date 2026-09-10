@@ -64,7 +64,7 @@ binary_sensor:
     filters:
       - delayed_off: 600ms
 
-    on_multi_click:
+    on_multi_click: ##### I cannot get this to work with any reliability
       - timing: # Unarmed
           - OFF for at least 1000ms
         then:
