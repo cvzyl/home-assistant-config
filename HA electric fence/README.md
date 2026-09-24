@@ -6,10 +6,11 @@ This ESPHome Electric Fence Controller is for my Nemtek merlin M18S Energiser, b
 - [Flashing ESPHome to Sonoff SV](https://www.youtube.com/watch?v=4Q3whVVVwYw)
 - [Werner Pieterson's Centurion D5 GitHub](https://github.com/wernerhp/esphome/blob/main/centurion-d5-evo/centurion-d5-evo.yaml) - good yaml for a variety of functions
 - [Connecting electric fence as alarm zone](https://www.youtube.com/watch?v=rIPFD3r421A)
-- Image of GPIO
-- Image of isolated mode
-- Image of my circuit
-- Image of my setup
+- Image of GPIO options ***NOTE*** 3.3V logic! (see documentation folder)
+- Image of (non-)isolated mode (see documentation folder)
+- Image of energiser inside (see documentation folder)
+- Image of energiser connections (see documentation folder)
+- Image of my Sonoff SV (see documentation folder)
 
 ## Basic Set-up
 ### Flashing Firmware
